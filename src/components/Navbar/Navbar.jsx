@@ -1,5 +1,6 @@
 import { Menu } from "antd";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const items = [
     {
@@ -12,7 +13,7 @@ const items = [
     },
     {
       label: 'My reservations',
-      key: 'myReservations',
+      key: 'my-reservations',
     },
     {
       label: 'Admin',
@@ -27,8 +28,11 @@ const items = [
 
 const Navbar = () => {
     const [current, setCurrent] = useState('movies');
+    const navigate = useNavigate();
+
     const onClick = (e) => {
       setCurrent(e.key);
+      navigate(`/${e.key}`);
     };
     return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
 };

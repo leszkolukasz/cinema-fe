@@ -1,6 +1,12 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
-import Navbar from "../components/Navbar/Navbar";
+import Admin from "views/Admin/Admin";
+import Login from "views/Login/Login";
+import Movie from "views/Movie/Movie";
+import Movies from "views/Movies/Movies";
+import Navbar from "components/Navbar/Navbar";
+import Reserve from "views/Reserve/Reserve";
+import MyReservations from "views/MyReservations/MyReservations";
 
 import "./App.css";
 
@@ -11,13 +17,13 @@ function App() {
         <Navbar/>
 
         <Routes>
-          <Route path="/login" element={<div />} />
-          <Route path="/movies" element={<div />} />
-          <Route path="/movie" element={<div />} />
-          <Route path="/reserve" element={<div />} />
-          <Route path="/reservations" element={<div />} />
-          <Route path="/admin" element={<div />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movie/:id" element={<Movie />} />
+          <Route path="/reserve" element={<Reserve />} />
+          <Route path="/my-reservations" element={<MyReservations />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="*" element={<Navigate to="/movies" replace />} />
         </Routes>
       </div>
     </BrowserRouter>
