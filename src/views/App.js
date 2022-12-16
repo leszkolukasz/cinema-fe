@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/movie/:id" element={<Movie />} />
+          <Route path="/movie/:movieId" element={<Movie />} />
           <Route path="/reserve" element={<Reserve />} />
           <Route path="/my-reservations" element={<MyReservations />} />
           <Route path="/admin" element={<Admin />} />

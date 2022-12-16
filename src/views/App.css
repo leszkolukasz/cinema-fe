@@ -1,3 +1,11 @@
 .container {
-  
+  width: 80%;
+  margin: 0 auto;
+}
+
+.search-bar {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
