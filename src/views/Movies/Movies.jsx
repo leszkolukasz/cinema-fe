@@ -64,7 +64,7 @@ const Movies = () => {
               >
                 <List.Item.Meta
                   title={<a href={`/movie/${item.id}`}>{item.title}</a>}
-                  description={item.email}
+                  description={<div>Director: {item.director}<br/>Release date: {item.release_date}</div>}
                 />
                 <div className="summary">{item.summary}</div>
               </List.Item>

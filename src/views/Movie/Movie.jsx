@@ -2,17 +2,21 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Descriptions } from "antd";
 
-import { getMovie } from "service/movieService";
+import { getMovie, getMovieScore } from "service/movieService";
 
 import "./Movie.css";
 
 const Movie = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
+  const [movieScore, setMovieScore] = useState('N/A')
 
   useEffect(() => {
     getMovie(movieId)
       .then((response) => setMovie(response.data))
+      .catch((err) => console.log(err));
+      getMovieScore(movieId)
+      .then((response) => setMovieScore(response.data || "N/A"))
       .catch((err) => console.log(err));
   }, []);
 
@@ -30,7 +34,7 @@ const Movie = () => {
             <Descriptions.Item label="Length">{movie.length}</Descriptions.Item>
             <Descriptions.Item label="Summary">{movie.summary}</Descriptions.Item>
           </Descriptions>
-          <h3>Score: </h3>
+          <h3>Score: {movieScore}</h3>
         </div>
       </div>
       <div className="reviews-container"></div>

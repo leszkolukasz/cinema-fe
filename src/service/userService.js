@@ -33,7 +33,7 @@ export const getToken = () => {
 };
 
 export const isTokenExpired = () => {
-  return isExpired(localStorage.getItem("token"));
+  return isExpired(getToken());
 };
 
 export const getUsername = () => {
@@ -45,5 +45,17 @@ export const setUsername = (name) => {
 };
 
 export const isLoggedIn = () => {
-    return getToken() !== null;
-}
+  return getToken() !== null;
+};
+
+export const getUserReservations = () => {
+  let headers = {'Authorization': 'Bearer ' + getToken()};
+
+  return API_ADAPTER.get("reservations", { headers });
+};
+
+export const deleteReservation = (id) => {
+  let headers = {'Authorization': 'Bearer ' + getToken()};
+
+  return API_ADAPTER.delete(`reservations/${id}`, { headers });
+};
