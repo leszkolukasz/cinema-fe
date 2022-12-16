@@ -1,17 +1,15 @@
 import { Button, Form, Input } from "antd";
-import { login, setToken, setUsername } from "service/userService";
+import { signUp } from "service/userService";
 import { useNavigate } from "react-router-dom";
 
-import "./Login.css";
+import "./Signup.css";
 
-const Login = () => {
+const Signup = () => {
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
     try {
-      let response = await login(values.username, values.password);
-      setToken(response.data.token);
-      setUsername(response.data.username);
+      await signUp(values.username, values.password);
       navigate("/");
     } catch (e) {
       console.log(e);
@@ -23,7 +21,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="signup-container">
       <Form
         name="basic"
         labelAlign="left"
@@ -60,4 +58,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

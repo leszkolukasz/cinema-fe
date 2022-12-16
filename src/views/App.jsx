@@ -2,10 +2,12 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import Admin from "views/Admin/Admin";
 import Login from "views/Login/Login";
+import Logout from "./Logout/Logout";
 import Movie from "views/Movie/Movie";
 import Movies from "views/Movies/Movies";
 import Navbar from "components/Navbar/Navbar";
 import Reserve from "views/Reserve/Reserve";
+import Signup from "views/Signup/Signup";
 import MyReservations from "views/MyReservations/MyReservations";
 
 import "./App.css";
@@ -18,6 +20,8 @@ function App() {
 
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<Signup />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/movie/:movieId" element={<Movie />} />
           <Route path="/reserve" element={<Reserve />} />
