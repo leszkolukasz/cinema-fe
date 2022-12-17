@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Descriptions, Button, Form, InputNumber, Input, List, Typography } from "antd";
+import { Descriptions, Button, Form, InputNumber, Input, List } from "antd";
 
 import { getMovie, getMovieScore, getReviews } from "service/movieService";
 import { addReview } from "service/movieService";
+import { isLoggedIn } from "service/userService";
 
 import "./Movie.css";
 
@@ -64,7 +65,7 @@ const Movie = () => {
           <h3>Score: {movieScore}</h3>
         </div>
       </div>
-      <div className="create-review-container">
+      {isLoggedIn() && <div className="create-review-container">
         <Form
           name="basic"
           labelCol={{ span: 8 }}
@@ -98,7 +99,7 @@ const Movie = () => {
             </Button>
           </Form.Item>
         </Form>
-      </div>
+      </div>}
       <div className="reviews-container">
         <List
           header={<h2>Reviews</h2>}

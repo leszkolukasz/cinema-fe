@@ -1,0 +1,23 @@
+.reserve-container {
+    margin-top: 100px;
+}
+
+.reserve-container h2 {
+    margin-bottom: 50px;
+}
+
+.movie-input {
+    min-width: 200px;
+}
+
+.day-input {
+    min-width: 100px;
+}
+
+.cinema-input {
+    min-width: 300px;
+}
+
+.screening-input {
+    min-width: 200px;
+}
