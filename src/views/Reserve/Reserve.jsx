@@ -3,11 +3,11 @@ import { Button, Select, Space } from "antd";
 
 import {
   getDaysWithMovieScreening,
-  getMovies,
+  getAvailableMovies,
   getCinemasWithMovieScreening,
   getScreeningsInCinemaWithMovieOnDay,
   getFreeSeatsForScreening,
-  makeReservation
+  makeReservation,
 } from "service/movieService";
 
 import "./Reserve.css";
@@ -25,7 +25,7 @@ const Reserve = () => {
       let data_tmp = [];
 
       // Movies
-      let response = await getMovies('', 1000);
+      let response = await getAvailableMovies();
       data_tmp.push({
         data: response.data.map((el) => {
           return { label: el.title, value: el.id };
@@ -150,7 +150,7 @@ const Reserve = () => {
       <h2>Make reservation</h2>
       <Space size="large" align="center">
         {dataToInputs(data)}
-        {seat.current && (
+        {seat.current !== null && (
           <Button
             onClick={() => {
               makeReservation(screening.current, seat.current)
